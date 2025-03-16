@@ -1,4 +1,5 @@
 #include "map.h"
+#include "json.h"
 #include <stdint.h>
 #include <Judy.h>
 
@@ -24,3 +25,10 @@ int fillcel(int mat, int x, int y)
   JLI(PValue, current_map, KEY(x, y));
   *PValue = *(Word_t*)&mat;
 } // TODO ret
+
+int load_map()
+{
+  Word_t rc;
+  JLFA(rc, current_map); //TODO ret?
+  // TODO json load
+}
