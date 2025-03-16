@@ -1,5 +1,5 @@
 #include "ray.h"
-#include "../window.h"
+#include "../map.h"
 #include <math.h>
 
 int let_rays(ENTITY e, RAYDATA *r, int rc)
@@ -13,12 +13,12 @@ int let_rays(ENTITY e, RAYDATA *r, int rc)
     for (int j = 0; j < MAX_DEEP; j++) {
       int ret;
       if (abs((int)(sin(ang) * 1000))  > 707) {
-        ret = let_ray_x(&r[i].dist, &x, &y, a);
+        ret = let_rayx(&r[i].dist[j], &x, &y, a);
       }
       else {
-        ret = let_ray_y(&r[i].dist, &x, &y, a);
+        ret = let_rayy(&r[i].dist[j], &x, &y, a);
       }
-      r[i].mat = ret;
+      r[i].mat[j] = ret;
       if (r[i].dist < 0 || ret > 0) {
         break;
       }
@@ -30,20 +30,23 @@ int let_rays(ENTITY e, RAYDATA *r, int rc)
     }
     ang += fovrc; //TODO
   }
-}
+} //TODO ret
 
 static int let_ray(int *d, float *x, float *y, float ax, float ay)
 {
   for (; *d < MAX_DIST; (*d)++) {
     *x += ax;
     *y += ay;
-    //TODO if ()
+    int mat;
+    if (is_celfill(&mat, *x, *y)) {
+      return mat;
+    }
   }
   *d = -1;
   return 0;
 }
 
-int let_ray_x(float *dist, float *x, float *y, float ang)
+int let_rayx(float *dist, float *x, float *y, float ang)
 {
   float ax = cosf(ang);
   int ay = sinf(ang) > 0 ? 1 : -1;
@@ -53,7 +56,7 @@ int let_ray_x(float *dist, float *x, float *y, float ang)
   return ret;
 }
 
-int let_ray_y(float *dist, float *x, float *y, float ang)
+int let_rayy(float *dist, float *x, float *y, float ang)
 {
   int ax = cosf(ang) > 0 ? 1 : -1;
   float ay = sinf(ang);

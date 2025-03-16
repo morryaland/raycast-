@@ -9,13 +9,13 @@
 #define MAX_DEEP 10
 
 typedef struct _raydata {
-  float dist;
-  int mat;
+  float dist[MAX_DEEP];
+  int mat[MAX_DEEP];
 } RAYDATA;
 
 int let_rays(ENTITY e, RAYDATA *r, int rc);
 
-int let_ray_x(float *dist, float *x, float *y, float ang);
-int let_ray_y(float *dist, float *x, float *y, float ang);
+int let_rayx(float *dist, float *x, float *y, float ang);
+int let_rayy(float *dist, float *x, float *y, float ang);
 
 #endif
