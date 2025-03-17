@@ -1,5 +1,4 @@
 #include "map.h"
-#include "json.h"
 #include <stdint.h>
 #include <Judy.h>
 
@@ -7,6 +6,12 @@
 #define KEY(x, y) ((*(uint64_t*)&x << 32) | *(uint32_t*)&y)
 
 static Pvoid_t current_map;
+
+int clear_map()
+{
+  Word_t Rc;
+  JLFA(Rc, current_map);
+}
 
 int is_celfill(int *mat, int x, int y)
 {
@@ -25,10 +30,3 @@ int fillcel(int mat, int x, int y)
   JLI(PValue, current_map, KEY(x, y));
   *PValue = *(Word_t*)&mat;
 } // TODO ret
-
-int load_map()
-{
-  Word_t rc;
-  JLFA(rc, current_map); //TODO ret?
-  // TODO json load
-}
