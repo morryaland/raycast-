@@ -12,7 +12,7 @@ int let_rays(ENTITY e, RAYDATA *r, int rc)
     float y = e.y;
     for (int j = 0; j < MAX_DEEP; j++) {
       int ret;
-      if (abs((int)(sin(ang) * 1000))  > 707) {
+      if (abs((int)(sin(ang) * 1000)) > 707) {
         ret = let_rayx(&r[i].dist[j], &x, &y, a);
       }
       else {
