@@ -4,6 +4,6 @@
 #include "map.h"
 
 void
-nextstep(int x, int y);
+nextstep(CHUNK *c, int x, int y);
 
 #endif

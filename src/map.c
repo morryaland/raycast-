@@ -5,18 +5,18 @@
 /** compress two int to one unsigned long */
 #define KEY(x, y) ((*(uint64_t*)&x << 32) | *(uint32_t*)&y)
 
-static Pvoid_t current_map;
+static Pvoid_t c_map;
 
 int clear_map()
 {
   Word_t Rc;
-  JLFA(Rc, current_map);
+  JLFA(Rc, c_map);
 }
 
 int is_celfill(int *mat, int x, int y)
 {
   PWord_t PValue = NULL;
-  JLG(PValue, current_map, KEY(x, y));
+  JLG(PValue, c_map, KEY(x, y));
   if (!PValue) {
     return 0;
   }
@@ -27,6 +27,6 @@ int is_celfill(int *mat, int x, int y)
 int fillcel(int mat, int x, int y)
 {
   PWord_t PValue = NULL;
-  JLI(PValue, current_map, KEY(x, y));
+  JLI(PValue, c_map, KEY(x, y));
   *PValue = *(Word_t*)&mat;
 } // TODO ret

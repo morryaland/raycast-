@@ -2,12 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-MAP *stdmap;
-
-MAP*
+CHUNK*
 create_map(unsigned int seed, unsigned int width, unsigned int height)
 {
-  MAP *m = malloc(sizeof(MAP));
+  CHUNK *m = malloc(sizeof(CHUNK));
   m->height = height;
   m->width = width;
   m->seed = seed;
@@ -16,7 +14,7 @@ create_map(unsigned int seed, unsigned int width, unsigned int height)
 }
 
 void
-free_map(MAP **map)
+free_map(CHUNK **map)
 {
   free((**map).data);
   free(*map);
@@ -24,25 +22,23 @@ free_map(MAP **map)
 }
 
 void
-set_mtrail(MAP *map, int x, int y)
+set_mtrail(CHUNK *map, int x, int y)
 {
-  map->data[y * map->width + x] = TRAIL_NUM;
+  map->data[y * map->width + x] = 1;
 }
 
 int
-ismtrail(MAP *map, int x, int y)
+ismtrail(CHUNK *map, int x, int y)
 {
-  return map->data[y * map->width + x] == TRAIL_NUM;
+  return map->data[y * map->width + x];
 }
 
-#include <unistd.h>
-
 void
-print_map(MAP *map)
+print_map(CHUNK *map)
 {
   for (int i = 0; i < map->height; i++) {
     for (int j = 0; j < map->width; j++) {
-      if (map->data[i * map->width + j] == TRAIL_NUM) {
+      if (map->data[i * map->width + j]) {
         putchar(TRAIL_CHAR);
       } else {
         putchar(' ');

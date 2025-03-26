@@ -1,7 +1,6 @@
-#ifndef __MAP_H__
-#define __MAP_H__
+#ifndef __MAZE_MAP_H__
+#define __MAZE_MAP_H__
 
-#define TRAIL_NUM  1
 #define TRAIL_CHAR '@'
 
 typedef struct _map {
@@ -9,28 +8,23 @@ typedef struct _map {
   unsigned int height;
   unsigned int seed;
   char *data;
-} MAP;
+} CHUNK;
 
-extern MAP *stdmap;
+extern CHUNK *stdmap;
 
-MAP*
+CHUNK*
 create_map(unsigned int seed, unsigned int width, unsigned int height);
 
 void
-free_map(MAP **map);
+free_map(CHUNK **map);
 
 void
-set_mtrail(MAP *map, int x, int y);
-
-#define set_trail(        x, y) \
-       set_mtrail(stdmap, x, y)
+set_mtrail(CHUNK *map, int x, int y);
 
 int
-ismtrail(MAP *map, int x, int y);
-#define istrail(        x, y) \
-       ismtrail(stdmap, x, y)
+ismtrail(CHUNK *map, int x, int y);
 
 void 
-print_map(MAP *map);
+print_map(CHUNK *map);
 
 #endif
