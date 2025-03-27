@@ -10,8 +10,6 @@ typedef struct _map {
   char *data;
 } CHUNK;
 
-extern CHUNK *stdmap;
-
 CHUNK*
 create_map(unsigned int seed, unsigned int width, unsigned int height);
 

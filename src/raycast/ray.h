@@ -10,7 +10,6 @@
 
 typedef struct _raydata {
   float dist[MAX_DEEP];
-  float index[MAX_DEEP]; //TODO
   int mat[MAX_DEEP];
 } RAYDATA;
 
