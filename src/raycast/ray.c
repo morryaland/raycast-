@@ -2,17 +2,17 @@
 #include "../map.h"
 #include <math.h>
 
-int let_rays(ENTITY e, RAYDATA *r, int rc)
+int let_rays(ENTITY *e, RAYDATA *r, int rc)
 {
-  float fovrc = e.fov / rc;
-  float ang = e.pov - e.fov / 2;
+  float fovrc = e->fov / rc;
+  float ang = e->pov - e->fov / 2;
   for (int i = 0; i < rc; i++) {
     float a = ang;
-    float x = e.x;
-    float y = e.y;
+    float x = e->x;
+    float y = e->y;
     for (int j = 0; j < MAX_DEEP; j++) {
       int ret;
-      if (abs((int)(sin(ang) * 1000)) > 707) {
+      if (sinf(ang) > 0.707 || sinf(ang) < -0.707) {
         ret = let_rayx(&r[i].dist[j], &x, &y, a);
       }
       else {

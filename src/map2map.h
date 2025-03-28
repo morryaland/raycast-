@@ -4,8 +4,10 @@
 #include "map.h"
 #include "maze/map.h"
 
+#define CHUNK_SIZE 31
+
 int map2map(CHUNK *chunk, int x, int y);
 
-int genchunk(MAP_INFO *mi, int x, int y);
+int genchunk(unsigned int seed, int x, int y);
 
 #endif

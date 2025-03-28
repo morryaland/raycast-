@@ -8,7 +8,7 @@ SRC = $(shell find $(SRC_PATH) -type f -name '*.c')
 OBJ = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o,$(SRC))
 
 CFLAGS = -O2
-LDFLAGS = -lm -lJudy
+LDFLAGS = -lm -lJudy -lSDL3
 
 $(TARGET): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
