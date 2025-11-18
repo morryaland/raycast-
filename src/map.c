@@ -23,7 +23,8 @@ int is_celfill(int *mat, int x, int y)
   if (!PValue) {
     return 0;
   }
-  *mat = *(int64_t*)PValue;
+  if (mat)
+    *mat = *(int64_t*)PValue;
   return 1;
 }
 

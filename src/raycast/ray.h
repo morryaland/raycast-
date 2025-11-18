@@ -15,7 +15,6 @@ typedef struct _raydata {
 
 int let_rays(ENTITY *e, RAYDATA *r, int rc);
 
-int let_rayx(float *dist, float *x, float *y, float ang);
-int let_rayy(float *dist, float *x, float *y, float ang);
+int let_ray(float *dist, float *x, float *y, float ang);
 
 #endif
