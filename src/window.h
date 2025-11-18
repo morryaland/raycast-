@@ -7,7 +7,8 @@
 extern SDL_Window *win;
 extern SDL_Renderer *rend;
 
-int drawray(RAYDATA *r, int rc);
+int drawrays(RAYDATA *r, int rc);
+int drawdots(RAYDATA *r, int rc);
 
 int drawline(int x, int y, int w, int h);
 

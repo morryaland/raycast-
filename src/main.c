@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
   genchunk(1, 0, 0);
   RAYDATA *r = malloc(sizeof(RAYDATA) * 200);
-  ENTITY pl = {.pov = M_PI, .fov = M_PI_2, .x = 3, .y = 3};
+  ENTITY pl = {.pov = M_PI, .fov = M_PI_4, .x = 3, .y = 3};
   SDL_CreateWindowAndRenderer("test", 800, 600, 0, &win, &rend);
   SDL_Event event;
   for (;;) {
@@ -38,7 +38,8 @@ int main(int argc, char *argv[])
     let_rays(&pl, r, 200);
     SDL_SetRenderDrawColor(rend, 0, 0, 0, 255);
     SDL_RenderClear(rend);
-    drawray(r, 200);
+    drawrays(r, 200);
+    drawdots(r, 200);
     SDL_RenderPresent(rend);
   }
   return 0;
