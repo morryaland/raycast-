@@ -11,10 +11,12 @@
 typedef struct _raydata {
   float dist[MAX_DEEP];
   int mat[MAX_DEEP];
+  float x[MAX_DEEP];
+  float y[MAX_DEEP];
 } RAYDATA;
 
 int let_rays(ENTITY *e, RAYDATA *r, int rc);
 
-int let_ray(float *dist, float *x, float *y, float ang);
+int let_ray(float *dist, float *x, float *y, float a, float b);
 
 #endif
